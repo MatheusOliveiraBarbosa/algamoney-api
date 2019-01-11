@@ -50,7 +50,7 @@
 			<artifactId>spring-security-oauth2</artifactId>
 			<version>2.3.4.RELEASE</version>
 		</dependency>
-		
+
 		<!-- JWT -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -62,13 +62,13 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 
 		<!-- FLYWAY -->
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
+			<optional>true</optional>
 		</dependency>
 
 		<!-- HIBERNATE JAVA 8 SUPPORT -->
@@ -77,12 +77,12 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-java8</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-jpamodelgen</artifactId>
 		</dependency>
-		
+
 		<!-- TO FIX JPAMODELENTITY -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -100,7 +100,7 @@
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
 
-		
+
 
 	</dependencies>
 
@@ -109,6 +109,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<configuration>
+					<url>${env.JDBC_DATABASE_URL}</url>
+				</configuration>
 			</plugin>
 
 		</plugins>
