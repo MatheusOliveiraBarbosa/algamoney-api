@@ -9,13 +9,14 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecurityExpressionHandler;
+
+import br.com.matheusoliveira.algamoney.api.security.AppUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
@@ -24,7 +25,7 @@ import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecur
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	@Autowired
-	private UserDetailsService userDetailsService;
+	private AppUserDetailsService userDetailsService;
 	
 	@Autowired
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
